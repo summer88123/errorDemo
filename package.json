@@ -39,8 +39,7 @@
     "@tarojs/runtime": "3.0.0-beta.5",
     "@tarojs/taro": "3.0.0-beta.5",
     "react": "^16.10.0",
-    "react-dom": "^16.10.0",
-    "taro-listview": "^1.4.0"
+    "react-dom": "^16.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
