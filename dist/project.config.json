@@ -1,13 +1,23 @@
 {
   "miniprogramRoot": "./",
-  "projectname": "myApp",
+  "projectname": "err-demo",
   "description": "testlist",
-  "appid": "touristappid",
+  "appid": "wxc0ebbcb41b556bc7",
   "setting": {
     "urlCheck": true,
     "es6": false,
     "postcss": false,
-    "minified": false
+    "preloadBackgroundData": false,
+    "minified": false,
+    "newFeature": true,
+    "autoAudits": false,
+    "coverView": true,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "useCompilerModule": true
   },
-  "compileType": "miniprogram"
+  "compileType": "miniprogram",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {}
 }

@@ -1,5 +1,5 @@
-// 时间类型 Time 时间类型 YearMonthDay 年月日 YearMonth 年月 Year 年
-// fullTime 全部时间/今天及以后  
+// 时间类型 ① Time 时间类型 ② YearMonthDay 年月日 ③ YearMonth 年月 ④ Year 年
+// fullTime ①true 全部时间; ②false 今天及以后  
 import React from "react";
 import { View, Text, PickerView, PickerViewColumn, Icon } from '@tarojs/components';
 import { getPickerViewList, getDate, getArrWithTime, formatDate, getDayList } from './utils';
@@ -13,8 +13,8 @@ export default class DateTimePicker extends React.Component {
     constructor(props) {
         super(props);
         this.nowYear = now.getFullYear();
-        this.nowMonth = now.getMonth() + 1;
-        this.nowDay = now.getDate();
+        this.nowMonth = 5;
+        this.nowDay = 28;
         this.state = {
             yearList: [],   //年 -下拉
             monthLsit: [], //月 -下拉
@@ -41,33 +41,53 @@ export default class DateTimePicker extends React.Component {
         const { type } = this.props;
         const selectIndexList = [];
         const arr = getArrWithTime(current || fmtInitValue || getDate(undefined, this.props.type), type); //优先当前选择的值，其次默认值，其次当前值
-        const { yearList, monthLsit, dayList, hourList, minuteList } = getPickerViewList(this.props.fullTime);
+        let { yearList, monthLsit, dayList, hourList, minuteList } = getPickerViewList(this.props.fullTime);
         let [year, month, day, hour, minute] = arr;
-        let _monthLsit, _dayList, beforeToday = false;
+        let _monthLsit, _dayList;
         if(this.props.fullTime){
             _monthLsit = monthLsit;
+            dayList = getDayList(year, month);
             _dayList = dayList;
         }else{
             if(year < this.nowYear){
-                beforeToday = true
                 arr[0] = this.nowYear + '';
                 arr[1] = this.nowMonth + '';
                 arr[2] = this.nowDay + '';
-                arr[3] = '0';
-                arr[4] = '0';
+                if(this.props.type !== 'Time'){
+                    arr[3] = '0';
+                    arr[4] = '0';
+                    hour = 0;
+                    minute = 0;
+                }
+                year = this.nowYear;
+                month = this.nowMonth;
+                day = this.nowDay;
+               
             }
             if(year == this.nowYear && month < this.nowMonth){
                 arr[1] = this.nowMonth + '';
                 arr[2] = this.nowDay + '';
-                arr[3] = '0';
-                arr[4] = '0';
+                month = this.nowMonth;
+                day = this.nowDay;
+                if(this.props.type !== 'Time'){
+                    arr[3] = '0';
+                    arr[4] = '0';
+                    hour = 0;
+                    minute = 0;
+                }
             }
             if(year == this.nowYear && month == this.nowMonth && day < this.nowDay){
                 arr[2] = this.nowDay + '';
-                arr[3] = '0';
-                arr[4] = '0';
+                day = this.nowDay;
+                if(this.props.type !== 'Time'){
+                    arr[3] = '0';
+                    arr[4] = '0';
+                    hour = 0;
+                    minute = 0;
+                }
             }
             _monthLsit = monthLsit.slice(monthLsit.indexOf(this.nowMonth + ''));
+            dayList = getDayList(year, month)
             _dayList = dayList.slice(dayList.indexOf(this.nowDay + ''));
         }
         //根据arr  数据索引
@@ -112,6 +132,7 @@ export default class DateTimePicker extends React.Component {
             hasChange: false,
             visible: false,
         });
+        console.log(current, 'current1')
         this.props.onOk && this.props.onOk(current);
     };
     // 切换
@@ -120,7 +141,7 @@ export default class DateTimePicker extends React.Component {
         let selectIndexList = e.detail.value;
         let [yearIndex, monthIndex, dayIndex, hourIndex, minuteIndex] = selectIndexList;
         const { yearList, monthLsit, dayList, hourList, minuteList } = this.state;
-        let month, day, hour, minute;
+        let month, day, hour, minute;   // 当前滚动显示的时间
         const yearStr = yearList[yearIndex];
         const monthStr = monthLsit[monthIndex];
         const dayStr = dayList[dayIndex];
@@ -137,21 +158,51 @@ export default class DateTimePicker extends React.Component {
             hour = Number(hourStr.substr(0, hourStr.length));
             minute = Number(minuteStr.substr(0, minuteStr.length));
         }
-        const newDayList = getDayList(year, month);
+        let newDayList = getDayList(year, month);
         let nowMonthList = monthLsit;
         if(!this.props.fullTime){
-            if(year > this.nowYear && monthLsit.length < fullMonthLsit.length){
-                // 重置月份
-                const newMonthIndex = fullMonthLsit.indexOf(monthStr + '');
+            // ① 滚动的年份大于当前
+            if(year > this.nowYear){
+                // 重置月份为全月份列表和全月份下的index
+                const newMonthIndex = fullMonthLsit.indexOf(month + '');
                 selectIndexList[1] = newMonthIndex;
                 nowMonthList = fullMonthLsit;
-                // 重置天
+                // 重置天天数列表
                 const newDayIndex = newDayList.indexOf(day + '');
                 selectIndexList[2] = newDayIndex;
-            }else if(year == this.nowYear && month > this.nowMonth && dayList.length < newDayList.length){
-                // 重置天
-                const newDayIndex = newDayList.indexOf(day + '');
-                selectIndexList[2] = newDayIndex;
+            }else if(year == this.nowYear){
+                // 比较滚动月份和今日月份
+                if(month <= this.nowMonth){
+                    // 重置 月份为今日月份及以后列表、今日月份及以后列表下的index、月份
+                    nowMonthList = fullMonthLsit.slice(fullMonthLsit.indexOf(this.nowMonth + ''));
+                    selectIndexList[1] = 0;
+                    month = this.nowMonth;
+                    // 重置 天数为今日及以后列表、今日及以后列表下的index、今日
+                    newDayList = getDayList(year, this.nowMonth).slice(getDayList(year, this.nowMonth).indexOf(this.nowDay + ''));
+                    if(newDayList.indexOf(day + '') == -1){
+                        if(day <= newDayList[0]){
+                            selectIndexList[2] = 0;
+                            day = Number(newDayList[0])
+                        }else if(day >= newDayList[newDayList.length - 1]){
+                            selectIndexList[2] = newDayList.length - 1;
+                            day = Number(newDayList[newDayList.length - 1])
+                        }
+                    }else{
+                        selectIndexList[2] = newDayList.indexOf(day + '');
+                    }
+                }
+                else if(month > this.nowMonth){
+                    // 重置天全列表下的index
+                    if(newDayList.indexOf(day + '') == -1){
+                        if(day <= newDayList[0]){
+                            selectIndexList[2] = 0
+                        }else if(day >= newDayList[newDayList.length - 1]){
+                            selectIndexList[2] = newDayList.length - 1
+                        }
+                    }else{
+                        selectIndexList[2] = newDayList.indexOf(day + '');
+                    }
+                }
             }
         }
         // 更新年、天数
@@ -166,6 +217,11 @@ export default class DateTimePicker extends React.Component {
             minute: minute || this.state.minute,
             hasChange: true,
         });
+        // setTimeout(() => {
+        //     this.setState({
+        //         selectIndexList,
+        //     })
+        // }, 0)
     };
     // 清除数据
     clear = () => {
@@ -203,7 +259,7 @@ export default class DateTimePicker extends React.Component {
         return (
             <View className="datetime-picker-wrap wrap-class">
                 <View className="selector-wrap" onClick={this.openModal} style={{width: '100%', position: 'relative', height: '20px'}}>
-                    <View className="select-item select-item-class"  style={{marginTop: '40px', fontSize: '15px', lineHeight: '30px', color: `${textColor}`, position: 'absolute', left: '0', width: 'calc(100%)', backgroundColor: '#eee'}}>
+                    <View className="select-item select-item-class"  style={{marginTop: '40px', backgroundColor: '#eee', fontSize: '15px', lineHeight: '20px', color: `${textColor}`, position: 'absolute', left: '0', width: 'calc(100%)'}}>
                         {dateText || placeholder}
                     </View>
                 </View>

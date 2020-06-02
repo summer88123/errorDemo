@@ -1,722 +1,11 @@
 (wx["webpackJsonp"] = wx["webpackJsonp"] || []).push([["taro"],{
 
-/***/ "./node_modules/@tarojs/api/dist/index.esm.js":
-/*!****************************************************!*\
-  !*** ./node_modules/@tarojs/api/dist/index.esm.js ***!
-  \****************************************************/
-/*! exports provided: default */
-/*! all exports used */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(global, window) {/* harmony import */ var _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tarojs/runtime */ "./node_modules/@tarojs/runtime/dist/runtime.esm.js");
-
-
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
-}
-
-if (typeof Object.assign !== 'function') {
-  // Must be writable: true, enumerable: false, configurable: true
-  Object.assign = function (target) {
-    // .length of function is 2
-    if (target == null) {
-      // TypeError if undefined or null
-      throw new TypeError('Cannot convert undefined or null to object');
-    }
-
-    var to = Object(target);
-
-    for (var index = 1; index < arguments.length; index++) {
-      var nextSource = arguments[index];
-
-      if (nextSource != null) {
-        // Skip over if undefined or null
-        for (var nextKey in nextSource) {
-          // Avoid bugs when hasOwnProperty is shadowed
-          if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
-            to[nextKey] = nextSource[nextKey];
-          }
-        }
-      }
-    }
-
-    return to;
-  };
-}
-
-if (typeof Object.defineProperties !== 'function') {
-  Object.defineProperties = function (obj, properties) {
-    function convertToDescriptor(desc) {
-      function hasProperty(obj, prop) {
-        return Object.prototype.hasOwnProperty.call(obj, prop);
-      }
-
-      function isCallable(v) {
-        // NB: modify as necessary if other values than functions are callable.
-        return typeof v === 'function';
-      }
-
-      if (_typeof(desc) !== 'object' || desc === null) {
-        throw new TypeError('bad desc');
-      }
-
-      var d = {};
-      if (hasProperty(desc, 'enumerable')) d.enumerable = !!desc.enumerable;
-
-      if (hasProperty(desc, 'configurable')) {
-        d.configurable = !!desc.configurable;
-      }
-
-      if (hasProperty(desc, 'value')) d.value = desc.value;
-      if (hasProperty(desc, 'writable')) d.writable = !!desc.writable;
-
-      if (hasProperty(desc, 'get')) {
-        var g = desc.get;
-
-        if (!isCallable(g) && typeof g !== 'undefined') {
-          throw new TypeError('bad get');
-        }
-
-        d.get = g;
-      }
-
-      if (hasProperty(desc, 'set')) {
-        var s = desc.set;
-
-        if (!isCallable(s) && typeof s !== 'undefined') {
-          throw new TypeError('bad set');
-        }
-
-        d.set = s;
-      }
-
-      if (('get' in d || 'set' in d) && ('value' in d || 'writable' in d)) {
-        throw new TypeError('identity-confused descriptor');
-      }
-
-      return d;
-    }
-
-    if (_typeof(obj) !== 'object' || obj === null) throw new TypeError('bad obj');
-    properties = Object(properties);
-    var keys = Object.keys(properties);
-    var descs = [];
-
-    for (var i = 0; i < keys.length; i++) {
-      descs.push([keys[i], convertToDescriptor(properties[keys[i]])]);
-    }
-
-    for (var _i = 0; _i < descs.length; _i++) {
-      Object.defineProperty(obj, descs[_i][0], descs[_i][1]);
-    }
-
-    return obj;
-  };
-}
-
-var ENV_TYPE = {
-  WEAPP: 'WEAPP',
-  WEB: 'WEB',
-  RN: 'RN',
-  SWAN: 'SWAN',
-  ALIPAY: 'ALIPAY',
-  TT: 'TT',
-  QQ: 'QQ',
-  JD: 'JD'
-};
-var _env = null; // 一个taro项目肯定运行同样的环境
-
-function getEnv() {
-  if (_env) return _env;
-
-  if (typeof jd !== 'undefined' && jd.getSystemInfo) {
-    _env = ENV_TYPE.JD;
-    return ENV_TYPE.JD;
-  }
-
-  if (typeof qq !== 'undefined' && qq.getSystemInfo) {
-    _env = ENV_TYPE.QQ;
-    return ENV_TYPE.QQ;
-  }
-
-  if (typeof tt !== 'undefined' && tt.getSystemInfo) {
-    _env = ENV_TYPE.TT;
-    return ENV_TYPE.TT;
-  }
-
-  if (typeof wx !== 'undefined' && wx.getSystemInfo) {
-    _env = ENV_TYPE.WEAPP;
-    return ENV_TYPE.WEAPP;
-  }
-
-  if (typeof swan !== 'undefined' && swan.getSystemInfo) {
-    _env = ENV_TYPE.SWAN;
-    return ENV_TYPE.SWAN;
-  }
-
-  if (typeof my !== 'undefined' && my.getSystemInfo) {
-    _env = ENV_TYPE.ALIPAY;
-    return ENV_TYPE.ALIPAY;
-  }
-
-  if (typeof global !== 'undefined' && global.__fbGenNativeModule) {
-    _env = ENV_TYPE.RN;
-    return ENV_TYPE.RN;
-  }
-
-  if (typeof window !== 'undefined') {
-    _env = ENV_TYPE.WEB;
-    return ENV_TYPE.WEB;
-  }
-
-  return 'Unknown environment';
-}
-
-function render() {}
-
-var Chain = /*#__PURE__*/function () {
-  function Chain(requestParams) {
-    var interceptors = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-    var index = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-
-    _classCallCheck(this, Chain);
-
-    this.index = index;
-    this.requestParams = requestParams;
-    this.interceptors = interceptors;
-  }
-
-  _createClass(Chain, [{
-    key: "proceed",
-    value: function proceed(requestParams) {
-      this.requestParams = requestParams;
-
-      if (this.index >= this.interceptors.length) {
-        throw new Error('chain 参数错误, 请勿直接修改 request.chain');
-      }
-
-      var nextInterceptor = this._getNextInterceptor();
-
-      var nextChain = this._getNextChain();
-
-      var p = nextInterceptor(nextChain);
-      var res = p["catch"](function (err) {
-        return Promise.reject(err);
-      });
-      if (typeof p.abort === 'function') res.abort = p.abort;
-      return res;
-    }
-  }, {
-    key: "_getNextInterceptor",
-    value: function _getNextInterceptor() {
-      return this.interceptors[this.index];
-    }
-  }, {
-    key: "_getNextChain",
-    value: function _getNextChain() {
-      return new Chain(this.requestParams, this.interceptors, this.index + 1);
-    }
-  }]);
-
-  return Chain;
-}();
-
-var Link = /*#__PURE__*/function () {
-  function Link(interceptor) {
-    _classCallCheck(this, Link);
-
-    this.taroInterceptor = interceptor;
-    this.chain = new Chain();
-  }
-
-  _createClass(Link, [{
-    key: "request",
-    value: function request(requestParams) {
-      var _this = this;
-
-      this.chain.interceptors = this.chain.interceptors.filter(function (interceptor) {
-        return interceptor !== _this.taroInterceptor;
-      });
-      this.chain.interceptors.push(this.taroInterceptor);
-      return this.chain.proceed(_objectSpread2({}, requestParams));
-    }
-  }, {
-    key: "addInterceptor",
-    value: function addInterceptor(interceptor) {
-      this.chain.interceptors.push(interceptor);
-    }
-  }, {
-    key: "cleanInterceptors",
-    value: function cleanInterceptors() {
-      this.chain = new Chain();
-    }
-  }]);
-
-  return Link;
-}();
-
-function timeoutInterceptor(chain) {
-  var requestParams = chain.requestParams;
-  var p;
-  var res = new Promise(function (resolve, reject) {
-    var timeout = setTimeout(function () {
-      timeout = null;
-      reject(new Error('网络链接超时,请稍后再试！'));
-    }, requestParams && requestParams.timeout || 60000);
-    chain.proceed(requestParams).then(function (res) {
-      if (!timeout) return;
-      clearTimeout(timeout);
-      resolve(res);
-    })["catch"](function (err) {
-      timeout && clearTimeout(timeout);
-      reject(err);
-    });
-  });
-  if (typeof p.abort === 'function') ;
-  return res;
-}
-
-function logInterceptor(chain) {
-  var requestParams = chain.requestParams;
-  var method = requestParams.method,
-      data = requestParams.data,
-      url = requestParams.url; // eslint-disable-next-line no-console
-
-  console.log("http ".concat(method || 'GET', " --> ").concat(url, " data: "), data);
-  var p = chain.proceed(requestParams);
-  var res = p.then(function (res) {
-    // eslint-disable-next-line no-console
-    console.log("http <-- ".concat(url, " result:"), res);
-    return res;
-  });
-  if (typeof p.abort === 'function') res.abort = p.abort;
-  return res;
-}
-
-var interceptors = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  timeoutInterceptor: timeoutInterceptor,
-  logInterceptor: logInterceptor
-});
-var onAndSyncApis = {
-  onSocketOpen: true,
-  onSocketError: true,
-  onSocketMessage: true,
-  onSocketClose: true,
-  onBackgroundAudioPlay: true,
-  onBackgroundAudioPause: true,
-  onBackgroundAudioStop: true,
-  onNetworkStatusChange: true,
-  onAccelerometerChange: true,
-  onCompassChange: true,
-  onBluetoothAdapterStateChange: true,
-  onBluetoothDeviceFound: true,
-  onBLEConnectionStateChange: true,
-  onBLECharacteristicValueChange: true,
-  onBeaconUpdate: true,
-  onBeaconServiceChange: true,
-  onUserCaptureScreen: true,
-  onHCEMessage: true,
-  onGetWifiList: true,
-  onWifiConnected: true,
-  onDeviceMotionChange: true,
-  setStorageSync: true,
-  getStorageSync: true,
-  getStorageInfoSync: true,
-  removeStorageSync: true,
-  clearStorageSync: true,
-  getSystemInfoSync: true,
-  getExtConfigSync: true,
-  getLogManager: true,
-  onMemoryWarning: true,
-  reportMonitor: true,
-  reportAnalytics: true,
-  navigateToSmartGameProgram: true,
-  // 文件
-  getFileSystemManager: true,
-  getLaunchOptionsSync: true,
-  onPageNotFound: true,
-  onError: true,
-  onAppShow: true,
-  onAppHide: true,
-  offPageNotFound: true,
-  offError: true,
-  offAppShow: true,
-  offAppHide: true,
-  onAudioInterruptionEnd: true,
-  onAudioInterruptionBegin: true,
-  onLocationChange: true,
-  offLocationChange: true
-};
-var noPromiseApis = {
-  // 媒体
-  stopRecord: true,
-  getRecorderManager: true,
-  pauseVoice: true,
-  stopVoice: true,
-  pauseBackgroundAudio: true,
-  stopBackgroundAudio: true,
-  getBackgroundAudioManager: true,
-  createAudioContext: true,
-  createInnerAudioContext: true,
-  createVideoContext: true,
-  createCameraContext: true,
-  createLivePlayerContext: true,
-  createLivePusherContext: true,
-  // 位置
-  createMapContext: true,
-  // 设备
-  canIUse: true,
-  startAccelerometer: true,
-  stopAccelerometer: true,
-  startCompass: true,
-  stopCompass: true,
-  // 界面
-  hideToast: true,
-  hideLoading: true,
-  showNavigationBarLoading: true,
-  hideNavigationBarLoading: true,
-  createAnimation: true,
-  createSelectorQuery: true,
-  createOffscreenCanvas: true,
-  createCanvasContext: true,
-  // createContext: true,
-  drawCanvas: true,
-  hideKeyboard: true,
-  stopPullDownRefresh: true,
-  createIntersectionObserver: true,
-  // 菜单
-  getMenuButtonBoundingClientRect: true,
-  onWindowResize: true,
-  offWindowResize: true,
-  // 拓展接口
-  arrayBufferToBase64: true,
-  base64ToArrayBuffer: true,
-  getAccountInfoSync: true,
-  getUpdateManager: true,
-  createWorker: true,
-  // 广告
-  createRewardedVideoAd: true,
-  createInterstitialAd: true
-};
-var otherApis = {
-  // 网络
-  uploadFile: true,
-  downloadFile: true,
-  connectSocket: true,
-  sendSocketMessage: true,
-  closeSocket: true,
-  // 媒体
-  chooseImage: true,
-  chooseMessageFile: true,
-  previewImage: true,
-  getImageInfo: true,
-  compressImage: true,
-  saveImageToPhotosAlbum: true,
-  startRecord: true,
-  playVoice: true,
-  setInnerAudioOption: true,
-  getAvailableAudioSources: true,
-  getBackgroundAudioPlayerState: true,
-  playBackgroundAudio: true,
-  seekBackgroundAudio: true,
-  chooseVideo: true,
-  saveVideoToPhotosAlbum: true,
-  loadFontFace: true,
-  // 文件
-  saveFile: true,
-  getFileInfo: true,
-  getSavedFileList: true,
-  getSavedFileInfo: true,
-  removeSavedFile: true,
-  openDocument: true,
-  // 数据缓存
-  setStorage: true,
-  getStorage: true,
-  getStorageInfo: true,
-  removeStorage: true,
-  clearStorage: true,
-  // 导航
-  navigateBack: true,
-  navigateTo: true,
-  redirectTo: true,
-  switchTab: true,
-  reLaunch: true,
-  // 位置
-  startLocationUpdate: true,
-  startLocationUpdateBackground: true,
-  stopLocationUpdate: true,
-  getLocation: true,
-  chooseLocation: true,
-  openLocation: true,
-  // 设备
-  getSystemInfo: true,
-  getNetworkType: true,
-  makePhoneCall: true,
-  scanCode: true,
-  setClipboardData: true,
-  getClipboardData: true,
-  openBluetoothAdapter: true,
-  closeBluetoothAdapter: true,
-  getBluetoothAdapterState: true,
-  startBluetoothDevicesDiscovery: true,
-  stopBluetoothDevicesDiscovery: true,
-  getBluetoothDevices: true,
-  getConnectedBluetoothDevices: true,
-  createBLEConnection: true,
-  closeBLEConnection: true,
-  getBLEDeviceServices: true,
-  getBLEDeviceCharacteristics: true,
-  readBLECharacteristicValue: true,
-  writeBLECharacteristicValue: true,
-  notifyBLECharacteristicValueChange: true,
-  startBeaconDiscovery: true,
-  stopBeaconDiscovery: true,
-  getBeacons: true,
-  setScreenBrightness: true,
-  getScreenBrightness: true,
-  setKeepScreenOn: true,
-  vibrateLong: true,
-  vibrateShort: true,
-  addPhoneContact: true,
-  getHCEState: true,
-  startHCE: true,
-  stopHCE: true,
-  sendHCEMessage: true,
-  startWifi: true,
-  stopWifi: true,
-  connectWifi: true,
-  getWifiList: true,
-  setWifiList: true,
-  getConnectedWifi: true,
-  startDeviceMotionListening: true,
-  stopDeviceMotionListening: true,
-  // 界面
-  pageScrollTo: true,
-  showToast: true,
-  showLoading: true,
-  showModal: true,
-  showActionSheet: true,
-  setNavigationBarTitle: true,
-  setNavigationBarColor: true,
-  setTabBarBadge: true,
-  removeTabBarBadge: true,
-  showTabBarRedDot: true,
-  hideTabBarRedDot: true,
-  setTabBarStyle: true,
-  setTabBarItem: true,
-  showTabBar: true,
-  hideTabBar: true,
-  setTopBarText: true,
-  startPullDownRefresh: true,
-  canvasToTempFilePath: true,
-  canvasGetImageData: true,
-  canvasPutImageData: true,
-  setBackgroundColor: true,
-  setBackgroundTextStyle: true,
-  getSelectedTextRange: true,
-  hideHomeButton: true,
-  // 第三方平台
-  getExtConfig: true,
-  // 开放接口
-  login: true,
-  checkSession: true,
-  authorize: true,
-  getUserInfo: true,
-  checkIsSupportFacialRecognition: true,
-  startFacialRecognitionVerify: true,
-  startFacialRecognitionVerifyAndUploadVideo: true,
-  faceVerifyForPay: true,
-  requestPayment: true,
-  showShareMenu: true,
-  hideShareMenu: true,
-  updateShareMenu: true,
-  getShareInfo: true,
-  chooseAddress: true,
-  addCard: true,
-  openCard: true,
-  openSetting: true,
-  getSetting: true,
-  getWeRunData: true,
-  navigateToMiniProgram: true,
-  navigateBackMiniProgram: true,
-  chooseInvoice: true,
-  chooseInvoiceTitle: true,
-  checkIsSupportSoterAuthentication: true,
-  startSoterAuthentication: true,
-  checkIsSoterEnrolledInDevice: true,
-  // 订阅消息
-  requestSubscribeMessage: true,
-  setEnableDebug: true,
-  // 支付宝小程序API
-  getOpenUserInfo: true,
-  // 百度小程序专有 API
-  // 百度小程序 AI 相关
-  ocrIdCard: true,
-  ocrBankCard: true,
-  ocrDrivingLicense: true,
-  ocrVehicleLicense: true,
-  textReview: true,
-  textToAudio: true,
-  imageAudit: true,
-  advancedGeneralIdentify: true,
-  objectDetectIdentify: true,
-  carClassify: true,
-  dishClassify: true,
-  logoClassify: true,
-  animalClassify: true,
-  plantClassify: true,
-  setPageInfo: true,
-  // 用户信息
-  getSwanId: true,
-  // 百度收银台支付
-  requestPolymerPayment: true,
-  // 打开小程序
-  navigateToSmartProgram: true,
-  navigateBackSmartProgram: true,
-  preloadSubPackage: true
-};
-
-function initPxTransform(config) {
-  var _config$designWidth = config.designWidth,
-      designWidth = _config$designWidth === void 0 ? 700 : _config$designWidth,
-      _config$deviceRatio = config.deviceRatio,
-      deviceRatio = _config$deviceRatio === void 0 ? {
-    640: 2.34 / 2,
-    750: 1,
-    828: 1.81 / 2
-  } : _config$deviceRatio;
-  this.config = this.config || {};
-  this.config.designWidth = designWidth;
-  this.config.deviceRatio = deviceRatio;
-}
-/* eslint-disable camelcase */
-
-
-var Taro = {
-  Events: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["Events"],
-  eventCenter: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["eventCenter"],
-  getEnv: getEnv,
-  ENV_TYPE: ENV_TYPE,
-  render: render,
-  noPromiseApis: noPromiseApis,
-  onAndSyncApis: onAndSyncApis,
-  otherApis: otherApis,
-  initPxTransform: initPxTransform,
-  Link: Link,
-  interceptors: interceptors,
-  Current: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["Current"],
-  useDidShow: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["useDidShow"],
-  useDidHide: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["useDidHide"],
-  usePullDownRefresh: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["usePullDownRefresh"],
-  useReachBottom: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["useReachBottom"],
-  usePageScroll: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["usePageScroll"],
-  useResize: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["useResize"],
-  useShareAppMessage: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["useShareAppMessage"],
-  useTabItemTap: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["useTabItemTap"],
-  useTitleClick: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["useTitleClick"],
-  useOptionMenuClick: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["useOptionMenuClick"],
-  usePullIntercept: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["usePullIntercept"],
-  useRouter: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["useRouter"],
-  options: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["options"],
-  nextTick: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["nextTick"]
-};
-/* harmony default export */ __webpack_exports__["default"] = (Taro);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! @tarojs/runtime */ "./node_modules/@tarojs/runtime/dist/runtime.esm.js")["window"]))
-
-/***/ }),
-
 /***/ "./node_modules/@tarojs/components/mini/index.js":
 /*!*******************************************************!*\
   !*** ./node_modules/@tarojs/components/mini/index.js ***!
   \*******************************************************/
 /*! exports provided: View, Icon, Progress, RichText, Text, Button, Checkbox, CheckboxGroup, Editor, Form, Input, Label, Picker, PickerView, PickerViewColumn, Radio, RadioGroup, Slider, Switch, CoverImage, Textarea, CoverView, MoveableArea, MoveableView, ScrollView, Swiper, SwiperItem, FunctionalPageNavigator, Navigator, Audio, Camera, Image, LivePlayer, LivePusher, Video, Map, Canvas, Ad, OfficialAccount, OpenData, WebView, NavigationBar, Block, MovableArea, MovableView */
-/*! exports used: Image, ScrollView, View */
+/*! exports used: PickerView, PickerViewColumn, View */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -733,8 +22,8 @@ var Taro = {
 /* unused harmony export Input */
 /* unused harmony export Label */
 /* unused harmony export Picker */
-/* unused harmony export PickerView */
-/* unused harmony export PickerViewColumn */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PickerView; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return PickerViewColumn; });
 /* unused harmony export Radio */
 /* unused harmony export RadioGroup */
 /* unused harmony export Slider */
@@ -744,14 +33,14 @@ var Taro = {
 /* unused harmony export CoverView */
 /* unused harmony export MoveableArea */
 /* unused harmony export MoveableView */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ScrollView; });
+/* unused harmony export ScrollView */
 /* unused harmony export Swiper */
 /* unused harmony export SwiperItem */
 /* unused harmony export FunctionalPageNavigator */
 /* unused harmony export Navigator */
 /* unused harmony export Audio */
 /* unused harmony export Camera */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Image; });
+/* unused harmony export Image */
 /* unused harmony export LivePlayer */
 /* unused harmony export LivePusher */
 /* unused harmony export Video */
@@ -851,9 +140,9 @@ Component(runtime_1.createRecursiveComponentConfig());
 /* unused harmony export render */
 /* unused harmony export unmountComponentAtNode */
 /* unused harmony export unstable_batchedUpdates */
-/* harmony import */ var _Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
-/* harmony import */ var _Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/typeof */ "./node_modules/@babel/runtime/helpers/esm/typeof.js");
+/* harmony import */ var _Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
+/* harmony import */ var _Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/typeof */ "./node_modules/@babel/runtime/helpers/esm/typeof.js");
 /* harmony import */ var react_reconciler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-reconciler */ "./node_modules/react-reconciler/index.js");
 /* harmony import */ var react_reconciler__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_reconciler__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var scheduler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! scheduler */ "./node_modules/scheduler/index.js");
@@ -871,7 +160,7 @@ function isString(o) {
 }
 
 function isObject(o) {
-  return o !== null && Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(o) === 'object';
+  return o !== null && Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(o) === 'object';
 }
 
 function isFunction(o) {
@@ -988,7 +277,16 @@ var ScrollView = Object.assign({
   'scroll-with-animation': 'false',
   'enable-back-to-top': 'false',
   'enable-flex': 'false',
-  'scroll-anchoring': ' false',
+  'scroll-anchoring': 'false',
+  'refresher-enabled': 'false',
+  'refresher-threshold': '45',
+  'refresher-default-style': singleQuote('black'),
+  'refresher-background': singleQuote('#FFF'),
+  'refresher-triggered': 'false',
+  bindRefresherPulling: '',
+  bindRefresherRefresh: '',
+  bindRefresherRestore: '',
+  bindRefresherAbort: '',
   bindScrolltoUpper: '',
   bindScrolltoLower: '',
   bindScroll: ''
@@ -1013,8 +311,10 @@ function updateProps(dom, oldProps, newProps) {
     }
   }
 
+  var isFormElement = dom instanceof _tarojs_runtime__WEBPACK_IMPORTED_MODULE_5__["FormElement"];
+
   for (i in newProps) {
-    if (oldProps[i] !== newProps[i]) {
+    if (oldProps[i] !== newProps[i] || isFormElement && i === 'value') {
       setProperty(dom, i, newProps[i], oldProps[i]);
     }
   }
@@ -1189,13 +489,13 @@ var ContainerMap = new WeakMap();
 
 var Root = /*#__PURE__*/function () {
   function Root(renderer, domContainer) {
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, Root);
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, Root);
 
     this.renderer = renderer;
     this.internalRoot = renderer.createContainer(domContainer, false, false);
   }
 
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(Root, [{
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(Root, [{
     key: "render",
     value: function render(children, cb) {
       this.renderer.updateContainer(children, this.internalRoot, null, cb);
@@ -1281,7 +581,7 @@ var index = {
 /*!**********************************************************!*\
   !*** ./node_modules/@tarojs/runtime/dist/runtime.esm.js ***!
   \**********************************************************/
-/*! exports provided: Current, Events, Style, TaroElement, TaroEvent, TaroNode, TaroRootElement, TaroText, cancelAnimationFrame, connectReactPage, connectVuePage, createComponentConfig, createDocument, createEvent, createPageConfig, createReactApp, createRecursiveComponentConfig, createVueApp, document, eventCenter, hydrate, injectPageInstance, navigator, nextTick, now, options, requestAnimationFrame, useDidHide, useDidShow, useOptionMenuClick, usePageScroll, usePullDownRefresh, usePullIntercept, useReachBottom, useReady, useResize, useRouter, useScope, useShareAppMessage, useTabItemTap, useTitleClick, window */
+/*! exports provided: Current, Events, FormElement, Style, TaroElement, TaroEvent, TaroNode, TaroRootElement, TaroText, cancelAnimationFrame, connectReactPage, connectVuePage, createComponentConfig, createDocument, createEvent, createPageConfig, createReactApp, createRecursiveComponentConfig, createVueApp, document, eventCenter, hydrate, injectPageInstance, navigator, nextTick, now, options, requestAnimationFrame, useDidHide, useDidShow, useOptionMenuClick, usePageScroll, usePullDownRefresh, usePullIntercept, useReachBottom, useReady, useResize, useRouter, useScope, useShareAppMessage, useTabItemTap, useTitleClick, window */
 /*! all exports used */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1289,6 +589,7 @@ var index = {
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(document, window, requestAnimationFrame, cancelAnimationFrame) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Current", function() { return Current; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Events", function() { return Events; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormElement", function() { return FormElement; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Style", function() { return Style; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TaroElement", function() { return TaroElement; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TaroEvent", function() { return TaroEvent; });
@@ -1329,17 +630,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useTabItemTap", function() { return useTabItemTap; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useTitleClick", function() { return useTitleClick; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "window", function() { return window$1; });
-/* harmony import */ var _Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
-/* harmony import */ var _Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_set__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/set */ "./node_modules/@babel/runtime/helpers/esm/set.js");
-/* harmony import */ var _Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
-/* harmony import */ var _Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/createSuper */ "./node_modules/@babel/runtime/helpers/esm/createSuper.js");
-/* harmony import */ var _Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var _Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
-/* harmony import */ var _Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/typeof */ "./node_modules/@babel/runtime/helpers/esm/typeof.js");
+/* harmony import */ var _Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
+/* harmony import */ var _Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_set__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/set */ "./node_modules/@babel/runtime/helpers/esm/set.js");
+/* harmony import */ var _Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
+/* harmony import */ var _Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/createSuper */ "./node_modules/@babel/runtime/helpers/esm/createSuper.js");
+/* harmony import */ var _Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
+/* harmony import */ var _Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/typeof */ "./node_modules/@babel/runtime/helpers/esm/typeof.js");
 
 
 
@@ -1361,7 +662,7 @@ function isUndefined(o) {
 }
 
 function isObject(o) {
-  return o !== null && Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"])(o) === 'object';
+  return o !== null && Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"])(o) === 'object';
 }
 
 function isFunction(o) {
@@ -1528,11 +829,13 @@ var Button = {
   'app-parameter': '',
   'show-message-card': 'false',
   bindGetUserInfo: '',
+  bindGetAuthorize: '',
   bindContact: '',
   bindGetPhoneNumber: '',
   bindError: '',
   bindOpenSetting: '',
   bindLaunchApp: '',
+  scope: '',
   name: ''
 };
 
@@ -1735,7 +1038,16 @@ var ScrollView = Object.assign({
   'scroll-with-animation': 'false',
   'enable-back-to-top': 'false',
   'enable-flex': 'false',
-  'scroll-anchoring': ' false',
+  'scroll-anchoring': 'false',
+  'refresher-enabled': 'false',
+  'refresher-threshold': '45',
+  'refresher-default-style': singleQuote('black'),
+  'refresher-background': singleQuote('#FFF'),
+  'refresher-triggered': 'false',
+  bindRefresherPulling: '',
+  bindRefresherRefresh: '',
+  bindRefresherRestore: '',
+  bindRefresherAbort: '',
   bindScrolltoUpper: '',
   bindScrolltoLower: '',
   bindScroll: ''
@@ -2042,12 +1354,12 @@ function isText(node) {
 
 var TaroEventTarget = /*#__PURE__*/function () {
   function TaroEventTarget() {
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, TaroEventTarget);
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, TaroEventTarget);
 
     this.__handlers = {};
   }
 
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(TaroEventTarget, [{
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(TaroEventTarget, [{
     key: "addEventListener",
     value: function addEventListener(type, handler, options) {
       warn(type === 'regionchange', 'map 组件的 regionchange 事件非常特殊，请使用 begin/end 事件替代。详情：https://github.com/NervJS/taro/issues/5766');
@@ -2110,7 +1422,7 @@ var eventSource = new Map();
 
 var TaroEvent = /*#__PURE__*/function () {
   function TaroEvent(type, opts, event) {
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, TaroEvent);
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, TaroEvent);
 
     this._stop = false;
     this._end = false;
@@ -2121,7 +1433,7 @@ var TaroEvent = /*#__PURE__*/function () {
     this.cancelable = Boolean(opts && opts.cancelable);
   }
 
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(TaroEvent, [{
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(TaroEvent, [{
     key: "stopPropagation",
     value: function stopPropagation() {
       this._stop = true;
@@ -2204,16 +1516,16 @@ function hydrate(node) {
   if (isText(node)) {
     var _ref;
 
-    return _ref = {}, Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(_ref, "v"
+    return _ref = {}, Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(_ref, "v"
     /* Text */
-    , node.nodeValue), Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(_ref, "nn"
+    , node.nodeValue), Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(_ref, "nn"
     /* NodeName */
     , node.nodeName), _ref;
   }
 
-  var data = (_data = {}, Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(_data, "nn"
+  var data = (_data = {}, Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(_data, "nn"
   /* NodeName */
-  , node.nodeName), Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(_data, "uid", node.uid), _data);
+  , node.nodeName), Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(_data, "uid", node.uid), _data);
   var props = node.props,
       childNodes = node.childNodes;
 
@@ -2331,14 +1643,14 @@ function findTextEnd(str, index) {
 
 var Scaner = /*#__PURE__*/function () {
   function Scaner(html) {
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, Scaner);
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, Scaner);
 
     this.tokens = [];
     this.position = initPosition();
     this.html = html;
   }
 
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(Scaner, [{
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(Scaner, [{
     key: "scan",
     value: function scan() {
       var html = this.html,
@@ -2806,12 +2118,12 @@ function format(children) {
       var attr = child.attributes[i];
 
       var _splitEqual = splitEqual(attr),
-          _splitEqual2 = Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(_splitEqual, 2),
+          _splitEqual2 = Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(_splitEqual, 2),
           key = _splitEqual2[0],
           value = _splitEqual2[1];
 
       if (key === 'class') {
-        el.className += el.className;
+        el.className += ' ' + unquote(value);
       } else if (key[0] === 'o' && key[1] === 'n') {
         continue;
       } else {
@@ -2970,14 +2282,14 @@ function setInnerHTML(element, html) {
 var nodeId = incrementId();
 
 var TaroNode = /*#__PURE__*/function (_TaroEventTarget) {
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(TaroNode, _TaroEventTarget);
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(TaroNode, _TaroEventTarget);
 
-  var _super = Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(TaroNode);
+  var _super = Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(TaroNode);
 
   function TaroNode(nodeType, nodeName) {
     var _this;
 
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, TaroNode);
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, TaroNode);
 
     _this = _super.call(this);
     _this.parentNode = null;
@@ -2992,11 +2304,11 @@ var TaroNode = /*#__PURE__*/function (_TaroEventTarget) {
     _this.nodeType = nodeType;
     _this.nodeName = nodeName;
     _this.uid = "_n_".concat(nodeId());
-    eventSource.set(_this.uid, Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(_this));
+    eventSource.set(_this.uid, Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(_this));
     return _this;
   }
 
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(TaroNode, [{
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(TaroNode, [{
     key: "insertBefore",
     value: function insertBefore(newChild, refChild, isReplace) {
       var _this2 = this;
@@ -3069,9 +2381,8 @@ var TaroNode = /*#__PURE__*/function (_TaroEventTarget) {
       }
 
       child.parentNode = null;
-      eventSource.delete(child.uid);
-
-      child._empty();
+      eventSource.delete(child.uid); // @TODO: eventSource memory overflow
+      // child._empty()
 
       return child;
     }
@@ -3206,14 +2517,14 @@ var TaroNode = /*#__PURE__*/function (_TaroEventTarget) {
 }(TaroEventTarget);
 
 var TaroText = /*#__PURE__*/function (_TaroNode) {
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(TaroText, _TaroNode);
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(TaroText, _TaroNode);
 
-  var _super2 = Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(TaroText);
+  var _super2 = Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(TaroText);
 
   function TaroText(text) {
     var _this4;
 
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, TaroText);
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, TaroText);
 
     _this4 = _super2.call(this, 3
     /* TEXT_NODE */
@@ -3222,7 +2533,7 @@ var TaroText = /*#__PURE__*/function (_TaroNode) {
     return _this4;
   }
 
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(TaroText, [{
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(TaroText, [{
     key: "textContent",
     set: function set(text) {
       this._value = text;
@@ -3304,14 +2615,14 @@ function initStyle(ctor) {
 
 var Style = /*#__PURE__*/function () {
   function Style(element) {
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, Style);
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, Style);
 
     this._element = element;
     this._usedStyleProp = new Set();
     this._value = {};
   }
 
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(Style, [{
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(Style, [{
     key: "setCssVariables",
     value: function setCssVariables(styleKey) {
       var _this5 = this;
@@ -3414,7 +2725,7 @@ var Style = /*#__PURE__*/function () {
         }
 
         var _rule$split = rule.split(':'),
-            _rule$split2 = Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(_rule$split, 2),
+            _rule$split2 = Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(_rule$split, 2),
             propName = _rule$split2[0],
             val = _rule$split2[1];
 
@@ -3434,14 +2745,14 @@ initStyle(Style);
 /* eslint-disable no-dupe-class-members */
 
 var TaroElement = /*#__PURE__*/function (_TaroNode2) {
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(TaroElement, _TaroNode2);
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(TaroElement, _TaroNode2);
 
-  var _super3 = Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(TaroElement);
+  var _super3 = Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(TaroElement);
 
   function TaroElement(nodeType, nodeName) {
     var _this8;
 
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, TaroElement);
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, TaroElement);
 
     _this8 = _super3.call(this, nodeType || 1
     /* ELEMENT_NODE */
@@ -3449,12 +2760,12 @@ var TaroElement = /*#__PURE__*/function (_TaroNode2) {
     _this8.props = {};
     _this8.dataset = EMPTY_OBJ;
     _this8.tagName = nodeName.toUpperCase();
-    _this8.style = new Style(Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(_this8));
+    _this8.style = new Style(Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(_this8));
     warn(_this8.tagName === 'MAP' && "weapp" === 'weapp', '微信小程序 map 组件的 `setting` 属性需要传递一个默认值。详情：\n https://developers.weixin.qq.com/miniprogram/dev/component/map.html');
     return _this8;
   }
 
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(TaroElement, [{
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(TaroElement, [{
     key: "hasAttribute",
     value: function hasAttribute(qualifiedName) {
       return !isUndefined(this.props[qualifiedName]);
@@ -3654,7 +2965,7 @@ var TaroElement = /*#__PURE__*/function (_TaroNode2) {
       return text;
     },
     set: function set(text) {
-      Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_set__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(TaroElement.prototype), "textContent", text, this, true);
+      Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_set__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(TaroElement.prototype), "textContent", text, this, true);
     }
   }]);
 
@@ -3662,17 +2973,17 @@ var TaroElement = /*#__PURE__*/function (_TaroNode2) {
 }(TaroNode);
 
 var FormElement = /*#__PURE__*/function (_TaroElement) {
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(FormElement, _TaroElement);
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(FormElement, _TaroElement);
 
-  var _super4 = Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(FormElement);
+  var _super4 = Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(FormElement);
 
   function FormElement() {
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, FormElement);
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, FormElement);
 
     return _super4.apply(this, arguments);
   }
 
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(FormElement, [{
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(FormElement, [{
     key: "value",
     get: function get() {
       // eslint-disable-next-line dot-notation
@@ -3689,12 +3000,12 @@ var FormElement = /*#__PURE__*/function (_TaroElement) {
 
 var Performance = /*#__PURE__*/function () {
   function Performance() {
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, Performance);
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, Performance);
 
     this.recorder = new Map();
   }
 
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(Performance, [{
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(Performance, [{
     key: "start",
     value: function start(id) {
       if (!options.debug) {
@@ -3724,14 +3035,14 @@ var Performance = /*#__PURE__*/function () {
 var perf = new Performance();
 
 var TaroRootElement = /*#__PURE__*/function (_TaroElement2) {
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(TaroRootElement, _TaroElement2);
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(TaroRootElement, _TaroElement2);
 
-  var _super5 = Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(TaroRootElement);
+  var _super5 = Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(TaroRootElement);
 
   function TaroRootElement() {
     var _this10;
 
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, TaroRootElement);
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, TaroRootElement);
 
     _this10 = _super5.call(this, 1
     /* ELEMENT_NODE */
@@ -3744,7 +3055,7 @@ var TaroRootElement = /*#__PURE__*/function (_TaroElement2) {
     return _this10;
   }
 
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(TaroRootElement, [{
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(TaroRootElement, [{
     key: "enqueueUpdate",
     value: function enqueueUpdate(payload) {
       this.updatePayloads.push(payload);
@@ -3857,19 +3168,19 @@ var doc = isBrowser ? document : EMPTY_OBJ;
 var win = isBrowser ? window : EMPTY_OBJ;
 
 var TaroDocument = /*#__PURE__*/function (_TaroElement3) {
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(TaroDocument, _TaroElement3);
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(TaroDocument, _TaroElement3);
 
-  var _super6 = Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(TaroDocument);
+  var _super6 = Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(TaroDocument);
 
   function TaroDocument() {
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, TaroDocument);
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, TaroDocument);
 
     return _super6.call(this, 9
     /* DOCUMENT_NODE */
     , '#document');
   }
 
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(TaroDocument, [{
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(TaroDocument, [{
     key: "createElement",
     value: function createElement(type) {
       if (type === 'root') {
@@ -3984,14 +3295,149 @@ var window$1 = isBrowser ? win : {
   document: document$1
 };
 
-if (false) {}
+if (true) {
+  window$1.requestAnimationFrame = raf;
+  window$1.cancelAnimationFrame = caf;
+  window$1.Date = Date;
+  window$1.setTimeout = setTimeout;
+}
 
 var Current = {
   app: null,
   router: null,
   page: null
 };
+
+var Events = /*#__PURE__*/function () {
+  function Events(opts) {
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, Events);
+
+    if (typeof opts !== 'undefined' && opts.callbacks) {
+      this.callbacks = opts.callbacks;
+    } else {
+      this.callbacks = {};
+    }
+  }
+
+  Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(Events, [{
+    key: "on",
+    value: function on(eventName, callback, context) {
+      var event, node, tail, list;
+
+      if (!callback) {
+        return this;
+      }
+
+      eventName = eventName.split(Events.eventSplitter);
+      var calls = this.callbacks;
+
+      while (event = eventName.shift()) {
+        list = calls[event];
+        node = list ? list.tail : {};
+        node.next = tail = {};
+        node.context = context;
+        node.callback = callback;
+        calls[event] = {
+          tail: tail,
+          next: list ? list.next : node
+        };
+      }
+
+      return this;
+    }
+  }, {
+    key: "once",
+    value: function once(events, callback, context) {
+      var _this12 = this;
+
+      var wrapper = function wrapper() {
+        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
+
+        callback.apply(_this12, args);
+
+        _this12.off(events, wrapper, context);
+      };
+
+      this.on(events, wrapper, context);
+      return this;
+    }
+  }, {
+    key: "off",
+    value: function off(events, callback, context) {
+      var event, calls, node, tail, cb, ctx;
+
+      if (!(calls = this.callbacks)) {
+        return this;
+      }
+
+      if (!(events || callback || context)) {
+        delete this.callbacks;
+        return this;
+      }
+
+      events = events ? events.split(Events.eventSplitter) : Object.keys(calls);
+
+      while (event = events.shift()) {
+        node = calls[event];
+        delete calls[event];
+
+        if (!node || !(callback || context)) {
+          continue;
+        }
+
+        tail = node.tail;
+
+        while ((node = node.next) !== tail) {
+          cb = node.callback;
+          ctx = node.context;
+
+          if (callback && cb !== callback || context && ctx !== context) {
+            this.on(event, cb, ctx);
+          }
+        }
+      }
+
+      return this;
+    }
+  }, {
+    key: "trigger",
+    value: function trigger(events) {
+      var event, node, calls, tail;
+
+      if (!(calls = this.callbacks)) {
+        return this;
+      }
+
+      events = events.split(Events.eventSplitter);
+      var rest = [].slice.call(arguments, 1);
+
+      while (event = events.shift()) {
+        if (node = calls[event]) {
+          tail = node.tail;
+
+          while ((node = node.next) !== tail) {
+            node.callback.apply(node.context || this, rest);
+          }
+        }
+      }
+
+      return this;
+    }
+  }]);
+
+  return Events;
+}();
+
+Events.eventSplitter = /\s+/;
+var eventCenter;
+
+if (false) {} else {
+  eventCenter = new Events();
+}
 /* eslint-disable dot-notation */
+
 
 var instances = new Map();
 
@@ -4032,8 +3478,8 @@ function safeExecute(path, lifecycle) {
 
   var func = isReact ? instance[lifecycle] : instance.$options[lifecycle];
 
-  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    args[_key - 2] = arguments[_key];
+  for (var _len2 = arguments.length, args = new Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+    args[_key2 - 2] = arguments[_key2];
   }
 
   if (isArray(func)) {
@@ -4071,56 +3517,85 @@ function getPath(id, options) {
   return path;
 }
 
+function getOnReadyEventKey(path) {
+  return path + '.' + 'onReady';
+}
+
+function getOnShowEventKey(path) {
+  return path + '.' + 'onShow';
+}
+
+function getOnHideEventKey(path) {
+  return path + '.' + 'onHide';
+}
+
 function createPageConfig(component, pageName, data) {
   var id = pageName !== null && pageName !== void 0 ? pageName : "taro_page_".concat(pageId()); // 小程序 Page 构造器是一个傲娇小公主，不能把复杂的对象挂载到参数上
 
   var pageElement = null;
   var config = {
     onLoad: function onLoad(options, cb) {
-      var _this12 = this;
+      var _this13 = this;
 
-      Current.router = {
-        params: options,
-        path: addLeadingSlash(this.route || this.__route__)
-      };
       perf.start(PAGE_INIT);
       var path = getPath(id, options);
+      Current.router = {
+        params: options,
+        path: addLeadingSlash(this.route || this.__route__),
+        onReady: getOnReadyEventKey(id),
+        onShow: getOnShowEventKey(id),
+        onHide: getOnHideEventKey(id)
+      };
       Current.app.mount(component, path, function () {
         pageElement = document$1.getElementById(path);
         ensure(pageElement !== null, '没有找到页面实例。');
         safeExecute(path, 'onLoad', options);
 
         if (!isBrowser) {
-          pageElement.ctx = _this12;
+          pageElement.ctx = _this13;
           pageElement.performUpdate(true, cb);
         }
       });
     },
     onReady: function onReady() {
       var path = getPath(id, this.options);
+      raf(function () {
+        eventCenter.trigger(getOnReadyEventKey(id));
+      });
       safeExecute(path, 'onReady');
     },
     onUnload: function onUnload() {
       var path = getPath(id, this.options);
       Current.app.unmount(path, function () {
+        instances.delete(path);
+
         if (pageElement) {
           pageElement.ctx = null;
         }
       });
     },
     onShow: function onShow() {
-      Current.router = {
-        params: this.options,
-        path: addLeadingSlash(this.route || this.__route__)
-      };
       Current.page = this;
       var path = getPath(id, this.options);
+      Current.router = {
+        params: this.options,
+        path: addLeadingSlash(this.route || this.__route__),
+        onReady: getOnReadyEventKey(id),
+        onShow: getOnShowEventKey(id),
+        onHide: getOnHideEventKey(id)
+      };
+      raf(function () {
+        eventCenter.trigger(getOnShowEventKey(id));
+      });
       safeExecute(path, 'onShow');
     },
     onHide: function onHide() {
       Current.page = null;
       Current.router = null;
       var path = getPath(id, this.options);
+      raf(function () {
+        eventCenter.trigger(getOnHideEventKey(id));
+      });
       safeExecute(path, 'onHide');
     },
     onPullDownRefresh: function onPullDownRefresh() {
@@ -4195,7 +3670,7 @@ function createComponentConfig(component, componentName, data) {
   var componentElement = null;
   var config = {
     attached: function attached() {
-      var _this13 = this;
+      var _this14 = this;
 
       perf.start(PAGE_INIT);
       Current.app.mount(component, id, function () {
@@ -4204,7 +3679,7 @@ function createComponentConfig(component, componentName, data) {
         safeExecute(id, 'onLoad');
 
         if (!isBrowser) {
-          componentElement.ctx = _this13;
+          componentElement.ctx = _this14;
           componentElement.performUpdate(true);
         }
       });
@@ -4244,7 +3719,7 @@ function createRecursiveComponentConfig() {
     properties: {
       i: {
         type: Object,
-        value: Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])({}, "nn"
+        value: Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])({}, "nn"
         /* NodeName */
         , 'view')
       }
@@ -4290,23 +3765,23 @@ function connectReactPage(R, id) {
     }
 
     return /*#__PURE__*/function (_R$Component) {
-      Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(Page, _R$Component);
+      Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(Page, _R$Component);
 
-      var _super7 = Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(Page);
+      var _super7 = Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(Page);
 
       function Page() {
-        var _this14;
+        var _this15;
 
-        Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, Page);
+        Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, Page);
 
-        _this14 = _super7.apply(this, arguments);
-        _this14.state = {
+        _this15 = _super7.apply(this, arguments);
+        _this15.state = {
           hasError: false
         };
-        return _this14;
+        return _this15;
       }
 
-      Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(Page, [{
+      Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(Page, [{
         key: "componentDidCatch",
         // React 16 uncaught error 会导致整个应用 crash，
         // 目前把错误缩小到页面
@@ -4352,7 +3827,7 @@ var R = EMPTY_OBJ;
 var PageContext = EMPTY_OBJ;
 var ReactDOM;
 
-function createReactApp(App, react, reactdom) {
+function createReactApp(App, react, reactdom, config) {
   R = react;
   ReactDOM = reactdom;
   ensure(!!ReactDOM, '构建 React/Nerv 项目请把 process.env.FRAMEWORK 设置为 \'react\'/\'nerv\' ');
@@ -4360,23 +3835,23 @@ function createReactApp(App, react, reactdom) {
   var wrapper;
 
   var AppWrapper = /*#__PURE__*/function (_R$Component2) {
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(AppWrapper, _R$Component2);
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(AppWrapper, _R$Component2);
 
-    var _super8 = Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(AppWrapper);
+    var _super8 = Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(AppWrapper);
 
     function AppWrapper() {
-      var _this15;
+      var _this16;
 
-      Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, AppWrapper);
+      Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, AppWrapper);
 
-      _this15 = _super8.apply(this, arguments); // run createElement() inside the render function to make sure that owner is right
+      _this16 = _super8.apply(this, arguments); // run createElement() inside the render function to make sure that owner is right
 
-      _this15.pages = [];
-      _this15.elements = [];
-      return _this15;
+      _this16.pages = [];
+      _this16.elements = [];
+      return _this16;
     }
 
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(AppWrapper, [{
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(AppWrapper, [{
       key: "mount",
       value: function mount(component, id, cb) {
         var page = function page() {
@@ -4422,10 +3897,12 @@ function createReactApp(App, react, reactdom) {
 
   var AppConfig = /*#__PURE__*/function () {
     function AppConfig() {
-      Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, AppConfig);
+      Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, AppConfig);
+
+      this.config = config;
     }
 
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(AppConfig, [{
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(AppConfig, [{
       key: "onLaunch",
       value: function onLaunch(options) {
         // eslint-disable-next-line react/no-render-return-value
@@ -4517,7 +3994,7 @@ function connectVuePage(Vue, id) {
 
 var Vue;
 
-function createVueApp(App, vue) {
+function createVueApp(App, vue, config) {
   Vue = vue;
   ensure(!!Vue, '构建 Vue 项目请把 process.env.FRAMEWORK 设置为 \'vue\'');
   Vue.config.getTagNamespace = noop;
@@ -4569,10 +4046,12 @@ function createVueApp(App, vue) {
 
   var AppConfig = /*#__PURE__*/function () {
     function AppConfig() {
-      Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, AppConfig);
+      Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, AppConfig);
+
+      this.config = config;
     }
 
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(AppConfig, [{
+    Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(AppConfig, [{
       key: "onLaunch",
       value: function onLaunch(options) {
         wrapper.$mount(document$1.getElementById('app'));
@@ -4637,7 +4116,7 @@ var taroHooks = function taroHooks(lifecycle) {
       }
 
       if (lifecycle !== 'onShareAppMessage') {
-        inst[lifecycle] = [].concat(Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(inst[lifecycle] || []), [fn.bind(null)]);
+        inst[lifecycle] = [].concat(Object(_Users_hecom_Downloads_errorDemo_node_modules_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(inst[lifecycle] || []), [fn.bind(null)]);
       } else {
         inst[lifecycle] = fn.bind(null);
       }
@@ -4705,588 +4184,8 @@ var nextTick = function nextTick(cb, ctx) {
   }
 };
 
-var Events = /*#__PURE__*/function () {
-  function Events(opts) {
-    Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])(this, Events);
-
-    if (typeof opts !== 'undefined' && opts.callbacks) {
-      this.callbacks = opts.callbacks;
-    } else {
-      this.callbacks = {};
-    }
-  }
-
-  Object(_Users_hecom_Desktop_myApp_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(Events, [{
-    key: "on",
-    value: function on(eventName, callback, context) {
-      var event, node, tail, list;
-
-      if (!callback) {
-        return this;
-      }
-
-      eventName = eventName.split(Events.eventSplitter);
-      var calls = this.callbacks;
-
-      while (event = eventName.shift()) {
-        list = calls[event];
-        node = list ? list.tail : {};
-        node.next = tail = {};
-        node.context = context;
-        node.callback = callback;
-        calls[event] = {
-          tail: tail,
-          next: list ? list.next : node
-        };
-      }
-
-      return this;
-    }
-  }, {
-    key: "once",
-    value: function once(events, callback, context) {
-      var _this16 = this;
-
-      var wrapper = function wrapper() {
-        for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-          args[_key2] = arguments[_key2];
-        }
-
-        callback.apply(_this16, args);
-
-        _this16.off(events, wrapper, context);
-      };
-
-      this.on(events, wrapper, context);
-      return this;
-    }
-  }, {
-    key: "off",
-    value: function off(events, callback, context) {
-      var event, calls, node, tail, cb, ctx;
-
-      if (!(calls = this.callbacks)) {
-        return this;
-      }
-
-      if (!(events || callback || context)) {
-        delete this.callbacks;
-        return this;
-      }
-
-      events = events ? events.split(Events.eventSplitter) : Object.keys(calls);
-
-      while (event = events.shift()) {
-        node = calls[event];
-        delete calls[event];
-
-        if (!node || !(callback || context)) {
-          continue;
-        }
-
-        tail = node.tail;
-
-        while ((node = node.next) !== tail) {
-          cb = node.callback;
-          ctx = node.context;
-
-          if (callback && cb !== callback || context && ctx !== context) {
-            this.on(event, cb, ctx);
-          }
-        }
-      }
-
-      return this;
-    }
-  }, {
-    key: "trigger",
-    value: function trigger(events) {
-      var event, node, calls, tail;
-
-      if (!(calls = this.callbacks)) {
-        return this;
-      }
-
-      events = events.split(Events.eventSplitter);
-      var rest = [].slice.call(arguments, 1);
-
-      while (event = events.shift()) {
-        if (node = calls[event]) {
-          tail = node.tail;
-
-          while ((node = node.next) !== tail) {
-            node.callback.apply(node.context || this, rest);
-          }
-        }
-      }
-
-      return this;
-    }
-  }]);
-
-  return Events;
-}();
-
-Events.eventSplitter = /\s+/;
-var eventCenter;
-
-if (false) {} else {
-  eventCenter = new Events();
-}
-
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! @tarojs/runtime */ "./node_modules/@tarojs/runtime/dist/runtime.esm.js")["document"], __webpack_require__(/*! @tarojs/runtime */ "./node_modules/@tarojs/runtime/dist/runtime.esm.js")["window"], __webpack_require__(/*! @tarojs/runtime */ "./node_modules/@tarojs/runtime/dist/runtime.esm.js")["requestAnimationFrame"], __webpack_require__(/*! @tarojs/runtime */ "./node_modules/@tarojs/runtime/dist/runtime.esm.js")["cancelAnimationFrame"]))
-
-/***/ }),
-
-/***/ "./node_modules/@tarojs/taro/index.js":
-/*!********************************************!*\
-  !*** ./node_modules/@tarojs/taro/index.js ***!
-  \********************************************/
-/*! no static exports found */
-/*! exports used: Component, default */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Taro = __webpack_require__(/*! @tarojs/api */ "./node_modules/@tarojs/api/dist/index.esm.js").default;
-
-var api; // bundler 可以自动移除不需要的 require
-
-if (false) {} else if (false) {} else if (false) {} else if (false) {} else if (false) {} else if (true) {
-  api = __webpack_require__(/*! ./lib/wx */ "./node_modules/@tarojs/taro/lib/wx.js");
-} // 兼容不同工具的 import 机制，如 Jest, rollup
-
-
-var initNativeAPI = api && api.default ? api.default : api; // 如果没有对应的 env type，那就啥也不干，例如 h5
-
-if (typeof initNativeAPI === 'function') {
-  initNativeAPI(Taro);
-}
-
-module.exports = Taro;
-module.exports.default = module.exports;
-
-/***/ }),
-
-/***/ "./node_modules/@tarojs/taro/lib/data-cache.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/@tarojs/taro/lib/data-cache.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.cacheDataSet = cacheDataSet;
-exports.cacheDataGet = cacheDataGet;
-exports.cacheDataHas = cacheDataHas;
-var data = {};
-
-function cacheDataSet(key, val) {
-  data[key] = val;
-}
-
-function cacheDataGet(key, delelteAfterGet) {
-  var temp = data[key];
-  delelteAfterGet && delete data[key];
-  return temp;
-}
-
-function cacheDataHas(key) {
-  return key in data;
-}
-
-/***/ }),
-
-/***/ "./node_modules/@tarojs/taro/lib/utils.js":
-/*!************************************************!*\
-  !*** ./node_modules/@tarojs/taro/lib/utils.js ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.queryToJson = queryToJson;
-exports.getUniqueKey = getUniqueKey;
-
-function queryToJson(str) {
-  var dec = decodeURIComponent;
-  var qp = str.split('&');
-  var ret = {};
-  var name;
-  var val;
-
-  for (var i = 0, l = qp.length, item; i < l; ++i) {
-    item = qp[i];
-
-    if (item.length) {
-      var s = item.indexOf('=');
-
-      if (s < 0) {
-        name = dec(item);
-        val = '';
-      } else {
-        name = dec(item.slice(0, s));
-        val = dec(item.slice(s + 1));
-      }
-
-      if (typeof ret[name] === 'string') {
-        // inline'd type check
-        ret[name] = [ret[name]];
-      }
-
-      if (Array.isArray(ret[name])) {
-        ret[name].push(val);
-      } else {
-        ret[name] = val;
-      }
-    }
-  }
-
-  return ret; // Object
-}
-
-var _i = 1;
-
-var _loadTime = new Date().getTime().toString();
-
-function getUniqueKey() {
-  return _loadTime + _i++;
-}
-
-/***/ }),
-
-/***/ "./node_modules/@tarojs/taro/lib/wx.js":
-/*!*********************************************!*\
-  !*** ./node_modules/@tarojs/taro/lib/wx.js ***!
-  \*********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = initNativeApi;
-
-var _api = _interopRequireDefault(__webpack_require__(/*! @tarojs/api */ "./node_modules/@tarojs/api/dist/index.esm.js"));
-
-var _dataCache = __webpack_require__(/*! ./data-cache */ "./node_modules/@tarojs/taro/lib/data-cache.js");
-
-var _utils = __webpack_require__(/*! ./utils */ "./node_modules/@tarojs/taro/lib/utils.js");
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    "default": obj
-  };
-}
-
-var noPromiseApis = _api["default"].noPromiseApis,
-    onAndSyncApis = _api["default"].onAndSyncApis,
-    otherApis = _api["default"].otherApis,
-    initPxTransform = _api["default"].initPxTransform,
-    Link = _api["default"].Link;
-var RequestQueue = {
-  MAX_REQUEST: 5,
-  queue: [],
-  request: function request(options) {
-    this.push(options); // 返回request task
-
-    return this.run();
-  },
-  push: function push(options) {
-    this.queue.push(options);
-  },
-  run: function run() {
-    var _this = this;
-
-    if (!this.queue.length) {
-      return;
-    }
-
-    if (this.queue.length <= this.MAX_REQUEST) {
-      var options = this.queue.shift();
-      var completeFn = options.complete;
-
-      options.complete = function () {
-        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-          args[_key] = arguments[_key];
-        }
-
-        completeFn && completeFn.apply(options, args);
-
-        _this.run();
-      };
-
-      return wx.request(options);
-    }
-  }
-};
-
-function taroInterceptor(chain) {
-  return request(chain.requestParams);
-}
-
-var link = new Link(taroInterceptor);
-
-function request(options) {
-  options = options || {};
-
-  if (typeof options === 'string') {
-    options = {
-      url: options
-    };
-  }
-
-  var originSuccess = options.success;
-  var originFail = options.fail;
-  var originComplete = options.complete;
-  var requestTask;
-  var p = new Promise(function (resolve, reject) {
-    options.success = function (res) {
-      originSuccess && originSuccess(res);
-      resolve(res);
-    };
-
-    options.fail = function (res) {
-      originFail && originFail(res);
-      reject(res);
-    };
-
-    options.complete = function (res) {
-      originComplete && originComplete(res);
-    };
-
-    requestTask = RequestQueue.request(options);
-  });
-
-  p.abort = function (cb) {
-    cb && cb();
-
-    if (requestTask) {
-      requestTask.abort();
-    }
-
-    return p;
-  };
-
-  return p;
-}
-
-function processApis(taro) {
-  var weApis = Object.assign({}, onAndSyncApis, noPromiseApis, otherApis);
-  var useDataCacheApis = {
-    navigateTo: true,
-    redirectTo: true,
-    reLaunch: true
-  };
-  var routerParamsPrivateKey = '__key_';
-  var preloadPrivateKey = '__preload_';
-  var preloadInitedComponent = '$preloadComponent';
-  Object.keys(weApis).forEach(function (key) {
-    if (!(key in wx)) {
-      taro[key] = function () {
-        console.warn("\u5FAE\u4FE1\u5C0F\u7A0B\u5E8F\u6682\u4E0D\u652F\u6301 ".concat(key));
-      };
-
-      return;
-    }
-
-    if (!onAndSyncApis[key] && !noPromiseApis[key]) {
-      taro[key] = function (options) {
-        for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-          args[_key2 - 1] = arguments[_key2];
-        }
-
-        options = options || {};
-        var task = null;
-        var obj = Object.assign({}, options);
-
-        if (typeof options === 'string') {
-          if (args.length) {
-            var _wx;
-
-            return (_wx = wx)[key].apply(_wx, [options].concat(args));
-          }
-
-          return wx[key](options);
-        }
-
-        if (key === 'navigateTo' || key === 'redirectTo' || key === 'switchTab') {
-          var url = obj.url ? obj.url.replace(/^\//, '') : '';
-          if (url.indexOf('?') > -1) url = url.split('?')[0];
-          var Component = (0, _dataCache.cacheDataGet)(url);
-
-          if (Component) {
-            var component = new Component();
-
-            if (component.componentWillPreload) {
-              var cacheKey = (0, _utils.getUniqueKey)();
-              var MarkIndex = obj.url.indexOf('?');
-              var hasMark = MarkIndex > -1;
-              var urlQueryStr = hasMark ? obj.url.substring(MarkIndex + 1, obj.url.length) : '';
-              var params = (0, _utils.queryToJson)(urlQueryStr);
-              obj.url += (hasMark ? '&' : '?') + "".concat(preloadPrivateKey, "=").concat(cacheKey);
-              (0, _dataCache.cacheDataSet)(cacheKey, component.componentWillPreload(params));
-              (0, _dataCache.cacheDataSet)(preloadInitedComponent, component);
-            }
-          }
-        }
-
-        if (useDataCacheApis[key]) {
-          var _url = obj.url = obj.url || '';
-
-          var _MarkIndex = _url.indexOf('?');
-
-          var _hasMark = _MarkIndex > -1;
-
-          var _urlQueryStr = _hasMark ? _url.substring(_MarkIndex + 1, _url.length) : '';
-
-          var _params = (0, _utils.queryToJson)(_urlQueryStr);
-
-          var _cacheKey = (0, _utils.getUniqueKey)();
-
-          obj.url += (_hasMark ? '&' : '?') + "".concat(routerParamsPrivateKey, "=").concat(_cacheKey);
-          (0, _dataCache.cacheDataSet)(_cacheKey, _params);
-        }
-
-        var p = new Promise(function (resolve, reject) {
-          ['fail', 'success', 'complete'].forEach(function (k) {
-            obj[k] = function (res) {
-              options[k] && options[k](res);
-
-              if (k === 'success') {
-                if (key === 'connectSocket') {
-                  resolve(Promise.resolve().then(function () {
-                    return Object.assign(task, res);
-                  }));
-                } else {
-                  resolve(res);
-                }
-              } else if (k === 'fail') {
-                reject(res);
-              }
-            };
-          });
-
-          if (args.length) {
-            var _wx2;
-
-            task = (_wx2 = wx)[key].apply(_wx2, [obj].concat(args));
-          } else {
-            task = wx[key](obj);
-          }
-        });
-
-        if (key === 'uploadFile' || key === 'downloadFile') {
-          p.progress = function (cb) {
-            if (task) {
-              task.onProgressUpdate(cb);
-            }
-
-            return p;
-          };
-
-          p.abort = function (cb) {
-            cb && cb();
-
-            if (task) {
-              task.abort();
-            }
-
-            return p;
-          };
-        }
-
-        return p;
-      };
-    } else {
-      taro[key] = function () {
-        for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-          args[_key3] = arguments[_key3];
-        }
-
-        var argsLen = args.length;
-        var newArgs = args.concat();
-        var lastArg = newArgs[argsLen - 1];
-
-        if (lastArg && lastArg.isTaroComponent && lastArg.$scope) {
-          newArgs.splice(argsLen - 1, 1, lastArg.$scope);
-        }
-
-        return wx[key].apply(wx, newArgs);
-      };
-    }
-  });
-}
-
-function pxTransform(size) {
-  var _ref = this.config || {},
-      _ref$designWidth = _ref.designWidth,
-      designWidth = _ref$designWidth === void 0 ? 750 : _ref$designWidth,
-      _ref$deviceRatio = _ref.deviceRatio,
-      deviceRatio = _ref$deviceRatio === void 0 ? {
-    640: 2.34 / 2,
-    750: 1,
-    828: 1.81 / 2
-  } : _ref$deviceRatio;
-
-  if (!(designWidth in deviceRatio)) {
-    throw new Error("deviceRatio \u914D\u7F6E\u4E2D\u4E0D\u5B58\u5728 ".concat(designWidth, " \u7684\u8BBE\u7F6E\uFF01"));
-  }
-
-  return parseInt(size, 10) / deviceRatio[designWidth] + 'rpx';
-}
-
-function canIUseWebp() {
-  var _wx$getSystemInfoSync = wx.getSystemInfoSync(),
-      platform = _wx$getSystemInfoSync.platform;
-
-  var platformLower = platform.toLowerCase();
-
-  if (platformLower === 'android' || platformLower === 'devtools') {
-    return true;
-  }
-
-  return false;
-}
-
-function wxCloud(taro) {
-  var wxC = wx.cloud || {};
-  var wxcloud = {};
-  var apiList = ['init', 'database', 'uploadFile', 'downloadFile', 'getTempFileURL', 'deleteFile', 'callFunction', 'CloudID'];
-  apiList.forEach(function (v) {
-    wxcloud[v] = wxC[v];
-  });
-  taro.cloud = wxcloud;
-}
-
-function initNativeApi(taro) {
-  processApis(taro);
-  taro.request = link.request.bind(link);
-  taro.addInterceptor = link.addInterceptor.bind(link);
-  taro.cleanInterceptors = link.cleanInterceptors.bind(link);
-  taro.getCurrentPages = getCurrentPages;
-  taro.getApp = getApp;
-  taro.requirePlugin = requirePlugin;
-  taro.initPxTransform = initPxTransform.bind(taro);
-  taro.pxTransform = pxTransform.bind(taro);
-  taro.canIUseWebp = canIUseWebp;
-  wxCloud(taro);
-}
 
 /***/ })
 
