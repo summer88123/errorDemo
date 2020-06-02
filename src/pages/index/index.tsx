@@ -27,7 +27,7 @@ export default class Index extends Component {
       <View>
           下方点击选择时间
           <View className='skeleton' style={{ height: '500px' }} >
-            <DateTimePicker fullTime={false} type={'Time'} initValue={'2018-05-27 11:21'} wrap-class="my-class"  select-item-class="mySelector" onOk={this.onPickerFinish}/>
+            <DateTimePicker fullTime={false} type={'Time'} initValue={'2018-05-24 11:21'} wrap-class="my-class"  select-item-class="mySelector" onOk={this.onPickerFinish}/>
           </View>
         </View>
     )
